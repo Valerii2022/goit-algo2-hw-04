@@ -3,6 +3,7 @@ class Node:
         self.children = {}  # Діти цього вузла
         self.end = False  # Позначає кінець слова
 
+
 class Trie:
     def __init__(self):
         self.root = Node()
@@ -14,6 +15,7 @@ class Trie:
                 current_node.children[char] = Node()
             current_node = current_node.children[char]
         current_node.end = True
+
 
 class LongestCommonWord(Trie):
     def __init__(self):
@@ -37,6 +39,7 @@ class LongestCommonWord(Trie):
             current_node = next_node
 
         return prefix
+
 
 if __name__ == "__main__":
     # Тести

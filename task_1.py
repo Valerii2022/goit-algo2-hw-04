@@ -92,9 +92,3 @@ if __name__ == "__main__":
         print(f"Префікс '{prefix}': {result}")
 
     print("\nТести пройдено успішно!")
-
-
-
-
-
-
