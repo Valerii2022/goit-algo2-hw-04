@@ -1,7 +1,7 @@
 class Node:
     def __init__(self):
-        self.children = {}  # Діти цього вузла
-        self.end = False  # Позначає кінець слова
+        self.children = {}
+        self.end = False
 
 
 class Trie:
@@ -23,17 +23,14 @@ class LongestCommonWord(Trie):
 
     def find_longest_common_word(self, strings) -> str:
         if not strings:
-            return ""  # Якщо масив порожній, повертаємо порожній рядок
+            return ""
 
-        # Додаємо всі слова в Trie
         for word in strings:
             self.put(word)
 
-        # Тепер шукаємо найдовший спільний префікс
         prefix = ""
         current_node = self.root
         while current_node and len(current_node.children) == 1 and not current_node.end:
-            # Вибираємо єдиного нащадка
             char, next_node = next(iter(current_node.children.items()))
             prefix += char
             current_node = next_node
@@ -42,15 +39,14 @@ class LongestCommonWord(Trie):
 
 
 if __name__ == "__main__":
-    # Тести
     trie = LongestCommonWord()
     strings = ["flower", "flow", "flight"]
-    print(trie.find_longest_common_word(strings))  # Повинно вивести "fl"
+    print(trie.find_longest_common_word(strings))
 
     trie = LongestCommonWord()
     strings = ["interspecies", "interstellar", "interstate"]
-    print(trie.find_longest_common_word(strings))  # Повинно вивести "inters"
+    print(trie.find_longest_common_word(strings))
 
     trie = LongestCommonWord()
     strings = ["dog", "racecar", "car"]
-    print(trie.find_longest_common_word(strings))  # Повинно вивести ""
+    print(trie.find_longest_common_word(strings))
